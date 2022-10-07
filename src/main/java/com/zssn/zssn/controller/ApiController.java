@@ -30,17 +30,42 @@ public class ApiController {
         survivorRepo.save(survivor);
         return "Successfully registered survivor!";
     }
-    @PutMapping(value="/updateSurvivor/{id}")
-    public String saveSurvivor(long id,@RequestBody Survivor survivor){
+    @PutMapping(value="/updateSurvivorLocation/{id}")
+    public String saveSurvivor(@PathVariable long id,@RequestBody Survivor survivor){
         Survivor updatedSurvivor = survivorRepo.findById(id).get();
-        updatedSurvivor.setName(survivor.getName());
-        updatedSurvivor.setAge(survivor.getAge());
-        updatedSurvivor.setGender(survivor.getGender());
-        updatedSurvivor.setInfected(survivor.isInfected());
+        updatedSurvivor.setLocationX(survivor.getLocationX());
+        updatedSurvivor.setLocationY(survivor.getLocationY());
+        survivorRepo.save(updatedSurvivor);
         return "Successfully updated survivor!";
     }
 
-
+    @GetMapping(value="/totalSurvivors")
+    public long countSurvivors(){
+        long count = survivorRepo.count();
+        return count;
+    }
+    @GetMapping(value="/infectedSurvivorsCount")
+    public long countInfectedSurvivors(){
+        long count = survivorRepo.countByInfected(true);//table stores in bit format
+        return count;
+    }
+    @GetMapping(value="/nonInfectedSurvivorsCount")
+    public long countNonInfectedSurvivors(){
+        long count = survivorRepo.countByInfected(false);//table stores in bit format
+        return count;
+    }
+    @GetMapping("/infectedPercentage")
+    public String getInfectedPercentage(){
+        double infectedRatio= ((double)countInfectedSurvivors()/(double)countSurvivors())*100;
+        Formatter formatter = new Formatter();
+        return formatter.format("%.2f", infectedRatio)+"%";
+    }
+    @GetMapping("/nonInfectedPercentage")
+    public String getNonInfectedPercentage(){
+        double infectedRatio= ((double)countNonInfectedSurvivors()/(double)countSurvivors())*100;
+        Formatter formatter = new Formatter();
+        return formatter.format("%.2f", infectedRatio)+"%";
+    }
     @GetMapping(value="/allInventory")
     public List<Inventory> getInventory(){
         return inventoryRepo.findAll();
@@ -50,22 +75,5 @@ public class ApiController {
         inventoryRepo.save(inventory);
         return "Successfully created inventory!";
     }
-    @GetMapping(value="/totalSurvivors")
-    public long countSurvivors(){
-        long count = survivorRepo.count();
-        return count;
-    }
-    @GetMapping(value="/infectedSurvivors")
-    public long countInfectedSurvivors(){
-        long count = survivorRepo.countByInfected(true);//table stores in bit format
-        return count;
-    }
-    @GetMapping("/infectedPercentage")
-    public String getInfectedPercentage(){
-        double infectedRatio= ((double)countInfectedSurvivors()/(double)countSurvivors())*100;
-        Formatter formatter = new Formatter();
-        return formatter.format("%.2f", infectedRatio)+"%";
-    }
-
 
 }
