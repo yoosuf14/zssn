@@ -12,6 +12,15 @@ public class Survivor {
     @Column
     private int age;
 
+    @Column
+    private String gender;
+    @Column
+    private double locationX;
+    @Column
+    private double locationY;
+    @Column
+    private boolean infected;
+
     public long getId() {
         return id;
     }
@@ -44,20 +53,20 @@ public class Survivor {
         this.gender = gender;
     }
 
-    public double getLocactionX() {
-        return locactionX;
+    public double getLocationX() {
+        return locationX;
     }
 
-    public void setLocactionX(double locactionX) {
-        this.locactionX = locactionX;
+    public void setLocationX(double locationX) {
+        this.locationX = locationX;
     }
 
-    public double getLocactionY() {
-        return locactionY;
+    public double getLocationY() {
+        return locationY;
     }
 
-    public void setLocactionY(double locactionY) {
-        this.locactionY = locactionY;
+    public void setLocationY(double locationY) {
+        this.locationY = locationY;
     }
 
     public boolean isInfected() {
@@ -67,14 +76,5 @@ public class Survivor {
     public void setInfected(boolean infected) {
         this.infected = infected;
     }
-
-    @Column
-    private String gender;
-    @Column
-    private double locactionX;
-    @Column
-    private double locactionY;
-    @Column
-    private boolean infected;
 
 }
