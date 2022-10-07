@@ -3,7 +3,7 @@ package com.zssn.zssn.models;
 import javax.persistence.*;
 
 @Entity
-public class survivor {
+public class Survivor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

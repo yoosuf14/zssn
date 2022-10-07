@@ -3,7 +3,7 @@ package com.zssn.zssn.models;
 import javax.persistence.*;
 
 @Entity
-public class inventory {
+public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
