@@ -1,7 +1,7 @@
 # Zombie Social Security Network
 This is a Springboot Rest Api for a Zombie Social Security Network
 
-Database name: zssn
+## Database name: zssn
 
 ### Add survivor
 
@@ -10,7 +10,7 @@ Database name: zssn
 
 ### Update Survivor location
 
-`GET /updateSurvivorLocation/{surviverId}`
+`GET /updateSurvivorLocation/{survivorId}`
 
 
 ### Get infected percentage
