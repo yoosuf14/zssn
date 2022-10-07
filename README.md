@@ -5,8 +5,8 @@ Database name: zssn
 
 ## Add survivor
 ### Request
-`GET /registerSurvivor/`
-### Example
+`POST /registerSurvivor/`
+### JSON example
 
 '{
 	"name":"Yoosuf Ahmadh",
@@ -19,8 +19,12 @@ Database name: zssn
 
 ## Update Survivor location
 ### Request
-`GET /updateSurvivorLocation/{survivorId}`
-
+`PUT /updateSurvivorLocation/{survivorId}`
+### JSON example
+{
+	"locationX":100.0,
+	"locationY":100..0
+}
 
 ## Get infected percentage
 ### Request
