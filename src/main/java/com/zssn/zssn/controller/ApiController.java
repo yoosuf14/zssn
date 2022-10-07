@@ -63,10 +63,8 @@ public class ApiController {
     @GetMapping("/infectedPercentage")
     public String getInfectedPercentage(){
         double infectedRatio= ((double)countInfectedSurvivors()/(double)countSurvivors())*100;
-
         Formatter formatter = new Formatter();
-        formatter.format("%.2f", infectedRatio);
-        return infectedRatio+"%";
+        return formatter.format("%.2f", infectedRatio)+"%";
     }
 
 
