@@ -9,7 +9,7 @@ The API must offer the following reports:
 Percentage of infected survivors.
 Percentage of non-infected survivors.
 
-Database name: zssn
+- Database name: zssn
 
 ## Add survivor
 ### Request
